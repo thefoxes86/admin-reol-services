@@ -40,6 +40,13 @@ yarn.lock*
 package-lock.json
 Cargo.lock
 
+node_modules
+/node_modules
+.parcel-cache
+/.parcel-cache
+dist
+/dist
+
 # Runtime data
 pids
 *.pid
