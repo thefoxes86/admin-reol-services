@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles.css" />
     <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css"
+    />
+    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
@@ -14,6 +18,9 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
     <script type="module" src="app.js"></script>
     <title>Reol Services - New admin template</title>
   </head>
@@ -126,72 +133,155 @@
       </symbol>
     </svg>
     <main>
-      <h1 class="visually-hidden">Sidebars examples</h1>
+      <div class="col-2">
+        <h1 class="visually-hidden">Sidebars examples</h1>
 
-      <div
-        class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark vh-100"
-        style="width: 280px"
-      >
-        <div class="d-flex align-items-center justify-content-center">
-          <img
-            src="https://github.com/mdo.png"
-            alt=""
-            width="80"
-            height="89"
-            class="rounded-circle me-2"
-          />
+        <div
+          class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark vh-100"
+        >
+          <div class="d-flex align-items-center justify-content-center">
+            <img
+              src="https://github.com/mdo.png"
+              alt=""
+              width="80"
+              height="89"
+              class="rounded-circle me-2"
+            />
+          </div>
+
+          <hr />
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link active" aria-current="page">
+                <svg class="bi me-2" width="16" height="16">
+                  <use xlink:href="#home" />
+                </svg>
+                Home
+              </a>
+            </li>
+
+            <!-- <li class="nav-item">
+          <button
+          class="btn btn-toggle align-items-center rounded collapsed"
+          data-bs-toggle="collapse"
+          data-bs-target="#home-collapse"
+          aria-expanded="true"
+          >
+          <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#speedometer2" />
+          </svg>
+          Dashboard
+        </button>
+        <div class="collapse show" id="home-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded">Overview</a></li>
+            <li><a href="#" class="link-dark rounded">Updates</a></li>
+            <li><a href="#" class="link-dark rounded">Reports</a></li>
+          </ul>
         </div>
-
-        <hr />
-        <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">
-              <svg class="bi me-2" width="16" height="16">
-                <use xlink:href="#home" />
-              </svg>
-              Home
-            </a>
-          </li>
-
-          <!-- <li class="nav-item">
+      </li> -->
+            <li>
+              <a href="#" class="nav-link text-white">
+                <svg class="bi me-2" width="16" height="16">
+                  <use xlink:href="#table" />
+                </svg>
+                Tabella
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">
+                <svg class="bi me-2" width="16" height="16">
+                  <use xlink:href="#grid" />
+                </svg>
+                Form
+              </a>
+            </li>
+          </ul>
+          <hr />
+          <div class="dropdown"></div>
+        </div>
+      </div>
+      <div class="col-10">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
             <button
-              class="btn btn-toggle align-items-center rounded collapsed"
+              class="navbar-toggler"
+              type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
             >
-              <svg class="bi me-2" width="16" height="16">
-                <use xlink:href="#speedometer2" />
-              </svg>
-              Dashboard
+              <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse show" id="home-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark rounded">Overview</a></li>
-                <li><a href="#" class="link-dark rounded">Updates</a></li>
-                <li><a href="#" class="link-dark rounded">Reports</a></li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled">Disabled</a>
+                </li>
               </ul>
+              <div>
+                <svg class="bi me-2" width="24" height="24">
+                  <use xlink:href="#people-circle" />
+                </svg>
+              </div>
             </div>
-          </li> -->
-          <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16">
-                <use xlink:href="#table" />
-              </svg>
-              Tabella
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16">
-                <use xlink:href="#grid" />
-              </svg>
-              Form
-            </a>
-          </li>
-        </ul>
-        <hr />
-        <div class="dropdown"></div>
+          </div>
+        </nav>
+        <div class="m-3 p-3 bg-white rounded">
+          <table id="example" class="table table-striped" style="width: 100%">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Nominativo</th>
+                <th>Codice Fiscale</th>
+                <th>Comune</th>
+                <th>Indirizzo</th>
+                <th>Prov</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </main>
   </body>
